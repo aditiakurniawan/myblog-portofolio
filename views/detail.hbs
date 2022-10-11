@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/logo.png" type="image/x-icon" />
+    <title>Detail Project</title>
+  </head>
+  <body >
+    <nav class="navbar navbar-expand-lg bg-light py-3">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/assets/images/logo.png" alt="logo" width="46" height="33" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item px-4">
+              <a
+                class="nav-link text-black fs-5"
+                aria-current="page"
+                href="/"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link fs-5 px-3 text-black"
+                aria-current="page"
+                href="/myproject"
+                >Add Project</a
+              >
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+             {{#if isLogin}}
+              <button class="btn btn-ligt fs-5 py-1 navbtn">
+              <a class="text-dark" href="#">Halo, {{user.name}}</a>
+              </button>
+              <button class="btn btn-ligt fs-5 mx-4 py-1 navbtn">
+              <a class="text-dark" href="/logout">Logout</a>
+              </button>
+              {{else}}
+             <button class="btn btn-ligt fs-5 py-1 navbtn">
+              <a class="text-dark" href="/register ">Register</a>
+              </button>
+              <button class="btn btn-ligt fs-5 mx-4 py-1 navbtn">
+              <a class="text-dark" href="/login">Login</a>
+              </button>
+            {{/if}}
+            <button class="btn btn-dark fs-5 px-4 py-1 navbtn">
+              <a href="/contact">Contact Me</a>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid bg-abu p-5 ">
+        <h1 class="text-center mt-4 pb-4 fw-bolder ">{{dataBlog.name}}</h1>
+        <div class="row m-5">
+            <div class="col-lg-8">
+                <img src="/assets/images/{{dataBlog.image}}" class="img-fluid  pb-1 pe-5 ps-0" />
+            </div>
+            <div class="col-lg-4">
+                <div>
+                    <h2 class="fw-semibold mb-3">Duration</h2>
+                </div>
+                <div >
+                    <div>
+                        <div class="d-flex pb-2 align-content-center mb-3">
+                           <img src="/assets/images/calendar.png" alt="date" width="40"
+                            height="40">
+                           <h3 class="px-3 pt-2 abu fw-semibold fs-4 ">{{dataBlog.start_date}} - {{dataBlog.end_date}}</h3>
+                        </div>
+                        <div class="d-flex pb-2 ">
+                            <img src="/assets/images/clock.png" alt="time" width="40"
+                            height="40">
+                            <h3 class="px-3 pt-2 abu fw-semibold fs-4">{{dataBlog.duration}}</h3>
+                        </div>
+                    </div>
+                    <h2 class="pt-5 pb-2 fw-semibold mb-3">Technologies</h2>
+                            
+                    <div class="container">
+                      <div class="row row-cols-2">
+                        {{#if dataBlog.technologies.[0]}}<i class="fa-brands fa-{{dataBlog.technologies.[0]}} fa-3x d-flex abu mb-3"><p class="p">Node Js</p></i>
+                        {{/if}}
+                        {{#if dataBlog.technologies.[1]}}<i class="fa-brands fa-{{dataBlog.technologies.[1]}} fa-3x d-flex abu mb-3"><p class="p">React Js</p></i>{{/if}}
+                        {{#if dataBlog.technologies.[2]}}<i class="fa-brands fa-{{dataBlog.technologies.[2]}} fa-3x d-flex abu mb-3"><p class="p">Angular</p></i>
+                        {{/if}}
+                        {{#if dataBlog.technologies.[3]}}<i class="fa-brands fa-{{dataBlog.technologies.[3]}} fa-3x d-flex abu mb-3"><p class="p">Vue Js</p></i>
+                        {{/if}}
+                      </div>
+                    </div>
+                        
+            </div>
+        </div>
+        <div>
+            <h5 class="fs-5 fw-normal lh-base detailtext my-5">
+                {{dataBlog.description}}
+            </h5>         
+        </div>
+    </div>
+</body>
+</html>
